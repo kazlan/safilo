@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, Popover} from 'ionic-angular';
 import { Observable } from 'rxjs/Observable'
 import { PopupPage } from '../popup/popup'
+import { ClientePage } from '../cliente/cliente'
 
 import {AngularFire, FirebaseListObservable} from 'angularfire2'
 
@@ -15,12 +16,13 @@ export class HomePage {
   lista: Observable<any>
   ref = firebase.database().ref("pedidos")
   marcas: FirebaseListObservable<any[]>
-  constructor(private navController: NavController,
+
+  constructor(private nav: NavController,
     public af: AngularFire
     ) {
     this.marcas = af.database.list(`/user/${this.user.uid}/marcas`)  
     this.pedidos = af.database.list('/pedidos')
-      // añade precio total del pedido
+      // añade precio total del pedido y cantidad de piezas
       .map(items=>{
         return items.map(item=>{
           return Object.assign({}, item, {
@@ -41,7 +43,10 @@ export class HomePage {
   }
   popup($event){
     let pop = Popover.create(PopupPage,{ user: this.user})
-    this.navController.present(pop,{ev:$event})
+    this.nav.present(pop,{ev:$event})
     
+  }
+  onListClick(cliente){
+    this.nav.push(ClientePage,{cliente})
   }
 }

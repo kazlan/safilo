@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
+import {HomePage} from './pages/home/home'
 import {LoginPage} from './pages/login/login'
 import { FIREBASE_PROVIDERS, defaultFirebase,
   AngularFire, AuthMethods, AuthProviders, firebaseAuthConfig } from 'angularfire2'
@@ -15,7 +15,7 @@ export class MyApp {
   private loggedIn:any;
   constructor(private platform:Platform, af: AngularFire) {
     af.auth.subscribe(x=>{
-      this.rootPage= x? TabsPage:LoginPage})
+      this.rootPage= x? HomePage:LoginPage})
     this.rootPage = LoginPage;
 
     platform.ready().then(() => {

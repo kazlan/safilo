@@ -14,14 +14,16 @@
 <ion-content padding class="home">
   <ion-list>
     <ion-list-header>Listado de pedidos</ion-list-header>
-    <ion-item *ngFor="let pedido of pedidos | async">
+    <ion-item *ngFor="let pedido of pedidos | async"
+      (click)="onListClick(pedido.cliente)"
+    >
       <h3>
         <span item-left>{{pedido.cliente.nombre}}&nbsp;({{pedido.cliente.id}})</span>
         <span item-right>{{pedido.fecha}}</span>
       </h3>
       <p>
-          <span item-left> {{pedido.piezas}} piezas de {{pedido.marca}}</span>
-          <span item-right> Total:&nbsp;{{pedido.total}}€</span>
+        <span item-left> {{pedido.piezas}} piezas de {{pedido.marca}}</span>
+        <span item-right> Total:&nbsp;{{pedido.total}}€</span>
       </p>
     </ion-item>
   </ion-list>

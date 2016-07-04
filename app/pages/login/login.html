@@ -6,14 +6,13 @@
 -->
 
 <ion-content padding>
-  <h2>Sales Agent Majordomus</h2>
-  <br>
-  <div center>
-    <p>Sincronizando información...</p>
-    <img src="img/penguin.gif" alt="">
-  </div>
-  <button (click)="login()" *ngIf="!loggedIn">
-    <ion-icon name="google" danger></ion-icon>
-    Login with Google
-  </button>
+  <ion-grid style="flex-direction: column;justify-content:center; align-items: center; height: 100%">
+        <h2>Optik</h2>
+        <p> Sincronizando info...</p>
+        <img src="img/penguin.gif" alt="">
+        <button (click)="login()" *ngIf="!loggedIn">
+          <ion-icon name="google" danger></ion-icon>
+            Login with Google
+        </button>
+  </ion-grid>
 </ion-content>
